@@ -67,21 +67,20 @@ export class Service{
 
     async getPost(slug) {
         try {
-            await this.databases.getDocument(
+            return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug
             )
-            return true
         } catch (error) {
             console.log("Appwrite serive :: getPost :: error", error);
             return false
         }
     }
 
-    async getPosts(queries = [Query.equal("status", "active")]) {
+    async getPosts(queries = [Query.equal("status", "active")]){ 
         try {
-            return this.databases.listDocuments(
+            return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 queries
@@ -121,10 +120,8 @@ export class Service{
     }
 
     getFilePreview(fileId){
-        return this.bucket.getFilePreview(
-            conf.appwriteBucketId,
-            fileId
-        )
+        console.log("File id is: ",fileId)
+        return this.bucket.getFilePreview( conf.appwriteBucketId, fileId )
     }
 
 } 

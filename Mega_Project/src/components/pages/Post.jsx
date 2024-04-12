@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../../appwrite/config";
-import { Button, Container } from "../components";
+import { Button, Container } from "../index";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -16,7 +16,10 @@ const Post = () => {
     useEffect(() => {
         if(slug) {
             appwriteService.getPost(slug).then((post) => {
-                if(post) setPost(post);
+                if(post) {
+                    console.log("Post is: ", post)
+                    setPost(post);
+                }
                 else navigate("/");
             });
         } else navigate("/")
@@ -30,6 +33,7 @@ const Post = () => {
             }
         });
     }
+    console.log("Current Post is: ", post)
     return post ? (
         <div className="py-8">
             <Container>

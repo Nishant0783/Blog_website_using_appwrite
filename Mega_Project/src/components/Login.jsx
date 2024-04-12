@@ -12,7 +12,7 @@ const Login = () => {
     const [error, setError] = useState("")
 
     // Below is from react-hook-form
-    const [register, handleSubmit] = useForm()
+    const {register, handleSubmit} = useForm()
 
     const login = async(data) => {
         setError("")

@@ -5,7 +5,7 @@ import authService from './appwrite/auth.js';
 import { Outlet } from 'react-router-dom'
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-
+import { login } from '../src/features/authSlice.js'
 
 const App = () => {
   const [loading, setLoading] = useState(true);

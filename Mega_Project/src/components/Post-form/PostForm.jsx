@@ -40,7 +40,7 @@ const PostForm = ({ post }) => {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
 
-                const dbPost = await appwriteService.createPost({ ...data, userId: unstable_renderSubtreeIntoContainer.$id })
+                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id })
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
@@ -50,7 +50,7 @@ const PostForm = ({ post }) => {
     };
 
     const slugTransform = useCallback((value) => {
-        if (value && typeOf(value) === "string") {
+        if (value && typeof(value) === "string") {
             return value
                 .trim()
                 .toLowerCase()

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 
 // "$id" is given by appwrite. We can write only "id" but acc to their docs they use "$id" so we doing same.
 const PostCard = ({$id, title, featuredImage}) => {
+  const fileId = featuredImage;
+  console.log("id of file is: ", fileId);
   return (
     <Link to={`/post/${$id}`}>
         <div className='w-full bg-gray-100 rounded-xl p-4'> 
